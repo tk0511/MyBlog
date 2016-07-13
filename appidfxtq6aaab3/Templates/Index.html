@@ -1,23 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<form>
-	<h2>Make list</h2>
-	<input type="text" name="item">
-	{% if items %}
-		{% for item in items %}
-			<input type="hidden" name="item" value={{item}}>
-		{% endfor %}
-	{% endif%}
-	<button>Add item</button>
-	<button name="save" value="1">Save list</button>
-</form>
-{% if items %}
-	<br><br><br>
-	<h2>List</h2>
-	<ul>
-		{% for item in items %}
-			<li>{{ item }}</li>
-		{% endfor %}
-	</ul>
-{% endif %}
+<div class="container">
+    <form>
+	    <h2>Make list</h2>
+	    <input type="text" name="item">
+	    {% if items %}
+		    {% for item in items %}
+			    <input type="hidden" name="item" value={{item}}>
+		    {% endfor %}
+	    {% endif%}
+	    <button>Add item</button>
+	    <button name="save" value="1">Save list</button>
+    </form>
+    {% if items %}
+	    <br><br><br>
+	    <h2>List</h2>
+	    <ul>
+		    {% for item in items %}
+			    <li>{{ item }}</li>
+		    {% endfor %}
+	    </ul>
+    {% endif %}
+</div>
 {% endblock %}

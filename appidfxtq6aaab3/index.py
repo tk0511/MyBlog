@@ -3,6 +3,7 @@
 import os
 import conf
 import jinja2
+#import asyncio
 import webapp2
 import MySQLdb
 import logging
@@ -64,5 +65,5 @@ try:
     from bae.core.wsgi import WSGIApplication
     application = WSGIApplication(setup())
 except:
-    application = setup
+    application = setup()
 
