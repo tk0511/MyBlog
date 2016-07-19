@@ -1,14 +1,19 @@
 #-*- coding:utf-8 -*-
 
+
 import os
-import conf
 import jinja2
-#import asyncio
+import time
+import db.orm as db
 import webapp2
-import MySQLdb
 import logging
+from conf import conf
 import logging.config
 
+if os.path.exists(os.path.join(os.getcwd(),'LocalSever.py')):
+    LOCAL_TEST = True
+else:
+    LOCAL_TEST = False
 
 
 class Handler(webapp2.RequestHandler):
@@ -23,47 +28,47 @@ class Handler(webapp2.RequestHandler):
         self.write(self.render_str(template, **kw))
 
 def connect_sql():
-    mydb = MySQLdb.connect(
-        host = conf.poi.host,
-        port = conf.poi.port,
-        user = conf.poi.user,
-        passwd = conf.poi.passwd,
-        db = conf.poi.db)
-    return mydb
+    try:
+        db.connect(conf.poi.user,conf.poi.passwd,conf.poi.db,conf.poi.host,conf.poi.port)
+    except:
+        LOGGER.error('db connection failed')
+        raise
+    return db
 
 class MainPage(Handler):
     def get(self):
+        global LOGGER
+        timer = time.time()
         items = self.request.get_all("item")
         self.render("Index.html", items = items)
+        LOGGER.info(time.time() - timer)
 
 
 def setup():
-    try:
-        #Setup Logger
-        global LOGGER
-        logging.config.fileConfig("logging.conf")
-        LOGGER = logging.getLogger()
+    #Setup Logger
+    global LOGGER
+    if LOCAL_TEST:
+        logging.config.fileConfig("conf/logging_local.conf")
+    else:
+        logging.config.fileConfig("conf/logging.conf")
+    LOGGER = logging.getLogger()
+    
+    #Setup Jinja
+    global JINJA_ENV
+    template_dir = os.path.join(os.path.dirname(__file__),"Templates")
+    JINJA_ENV = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
-        #Setup Jinja
-        global JINJA_ENV
-        template_dir = os.path.join(os.path.dirname(__file__),"Templates")
-        JINJA_ENV = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
-
-        #Connect to mySQL data base'
-        global DB
-        DB = connect_sql()
-    except:
-        LOGGER.fatal('Initialize failed!')
-        raise
+    #Connect to mySQL data base'
+    global DB
+    DB = connect_sql()
 
     LOGGER.info("Initialize sucess!")
     return webapp2.WSGIApplication([('/',MainPage),],debug=True)
 
 
 # Run
-try:
+if LOCAL_TEST:
+    application = setup()
+else:
     from bae.core.wsgi import WSGIApplication
     application = WSGIApplication(setup())
-except:
-    application = setup()
-

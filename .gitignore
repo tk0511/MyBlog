@@ -1,0 +1,13 @@
+#[Temporary file]
+/appidfxtq6aaab3/buding/
+/appidfxtq6aaab3/*.pyc
+
+#[Configure file]
+appidfxtq6aaab3/.git/
+appidfxtq6aaab3/conf/conf.py
+appidfxtq6aaab3/conf/logging.conf
+
+#[Visual studio project file]
+/appidfxtq6aaab3/.vs/
+/appidfxtq6aaab3/*.pyproj
+/appidfxtq6aaab3/*.sln
