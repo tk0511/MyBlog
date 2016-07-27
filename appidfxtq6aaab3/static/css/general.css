@@ -1,0 +1,125 @@
+/*Global
+---------------------------------------*/
+body {
+    background-color: #fdfdfd;
+}
+
+.container {
+    font-family: 'Microsoft YaHei', 'Hiragino Sans GB', SimHei, sans-serif;
+    border:0px;
+    background: inherit;
+    max-width: 960px;
+    min-height: 900px;
+}
+
+
+/*Main
+---------------------------------------*/
+
+/*Header*/
+.header-super {
+    height: 55px;
+    padding-left: 32px;
+    padding-top: 5px;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.header-super * {
+    display: inline;
+}
+
+#page-main {
+    padding: 0;
+}
+
+/*Side
+---------------------------------------*/
+
+/*Corner img*/
+#corner-img {
+     margin: 30px auto;
+     width: 150px;
+     height: 150px;
+}
+
+/*Navigation*/
+#nav-right {
+    padding-bottom: 0;
+}
+
+#nav-right > li {
+    font-size: 18px;
+    margin: 0 7.3%;
+    text-align: center;
+    transition-duration: 0.3s;
+}
+
+#nav-right > li > a {
+    border-bottom: 1px solid #dfdfdf;
+    display: block;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: 0.3s;
+    color: black;
+    text-decoration: none;
+}
+
+#active-nav-right {
+    font-weight: bold;
+}
+
+@media (min-width: 768px){
+    #nav-right {
+        border-top: 1px solid #000;
+    }
+
+    #nav-right > li:hover {
+        box-shadow: rgba(0,0,0,0.2) 3px 3px 2px;
+        background-color: #fff;
+    }
+}
+
+@media (max-width: 767px) {
+    #page-side {
+        position: fixed;
+        bottom: calc(50% - 164px);
+        right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        width: 50px;
+        margin: 0 calc((8.3% - 35px)/2);
+    }
+
+    #nav-right > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        writing-mode: vertical-lr;
+    }
+
+    #nav-right>:first-child a{
+        border-top: 1px solid #dfdfdf;
+    }
+
+    #active-nav-right {
+        border-top: 3px solid black !important;
+    }
+}
+
+
+/*General
+---------------------------------------*/
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.unselectable {
+    cursor:default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}

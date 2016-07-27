@@ -123,7 +123,6 @@ def qde(table, primary_val):
 
 _ColumnInfo = namedtuple('_ColumnInfo','name type default extra type_verifier')
 _VAL_REGEX = re.compile('([^ ]*) ([^ ]*) ?(default ?= ?)?(?(3)([^ ]*)|) ?(.*)')
-#_VAL_REGEX = re.compile('([^ ]*) ([^ ]*) ?(default ?= ?)?(?(3)([^ ]*)|) ?(.*)?')
 _TYPE_VERIFIER = {'account': str_field}
 _TYPE_ATTRS = {'account':{}}
 _TYPE = {'account':'char(20)'}
@@ -131,6 +130,7 @@ _TABLE_PRIMARY = {}
 _TABLE_INFO = {}
 execute = db.execute
 connect = db.deploy_engine
+
 #----------TEST-----------
 if __name__ == '__main__':
     try:

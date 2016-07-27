@@ -1,5 +1,3 @@
-webapp2==2.5
-webob==1.1.1
-jinja2==2.8
+jinja2
 MySQL-python
 bae_log

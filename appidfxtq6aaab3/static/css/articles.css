@@ -1,0 +1,98 @@
+﻿/*Global
+---------------------------------------*/
+@media (max-width: 767px) {
+    .container {
+        padding: 0;
+    }
+}
+
+@font-face {
+    font-family: 'AudiowideRegular';
+    src: url('http://tk0511.duapp.com/fonts/AudiowideRegular.woff2');
+}
+
+/*Components
+---------------------------------------*/
+
+/*Articles*/
+#content-body {
+    max-width: 100%;
+}
+
+.article {
+    margin-bottom: 4px;
+    padding-bottom: 5px;
+    background-color: #fff;
+    height: 100%;
+    box-shadow: rgba(0,0,0,0.2) 2px 2px 2px;
+}
+
+.article-header {
+    margin-top:0;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    color: #000;
+    font-size: 21px;
+}
+
+.article-header > small{
+    font-family: 'AudiowideRegular', sans-serif;
+    font-size: 10px;
+    color: #9d9d9d;
+    margin-left: 1.5em;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+}
+
+.article-contents {
+    border-left: 5px solid #dfdfdf;
+    margin-left: 15px;
+    padding-left: 3px;
+    margin-right: 9px;
+    text-align:justify;
+    cursor: pointer;
+    color: #5b5b5b;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 13px;
+    max-height: 55px;
+}
+
+.article-contents::after {
+    position: absolute;
+    width: 30px;
+    top: calc(100% - 20px);
+    text-align: center;
+    content: ". . .";
+    font-weight:bold;
+    color: #aaa;
+    left: calc(50% - 15px);
+    transition-duration: 0.4s;
+}
+
+.article-contents:hover::after {
+    content: "▼";
+    color: #000;
+    top: calc(100% - 17px);
+}
+
+.article-contents-actived {
+    cursor: default;
+}
+
+.article-contents-actived::after {
+    content: none !important;
+}
+
+.article-contents-actived:hover::after {
+    content: none !important;
+}
+
+@media (max-width: 767px) {
+    .article-contents {
+        font-size: 15px;
+        max-height: 61px;
+    }
+}

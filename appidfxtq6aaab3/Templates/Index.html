@@ -1,25 +1,51 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="container">
-    <form>
-	    <h2>Make list</h2>
-	    <input type="text" name="item">
-	    {% if items %}
-		    {% for item in items %}
-			    <input type="hidden" name="item" value={{item}}>
-        {% endfor %}
-	    {% endif %}
-	    <button>Add item</button>
-	    <button name="save" value="1">Save list</button>
-    </form>
-    {% if items %}
-	    <br><br><br>
-	    <h2>List</h2>
-	    <ul>
-		    {% for item in items %}
-			    <li>{{ item }}</li>
-		    {% endfor %}
-	    </ul>
-    {% endif %}
-</div>
-{% endblock %}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>tk0511</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://tk0511.duapp.com/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://tk0511.duapp.com/css/general.css">
+    <link rel="stylesheet" href="http://tk0511.duapp.com/css/articles.css" />
+    <script type="text/javascript" src="http://tk0511.duapp.com/js/articles.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="page-main" class="col-sm-9 col-xs-11">
+            <!--Header-->
+            <div class="row">
+                <div class="header-super col-xs-12">
+                    <h1 class="unselectable">tk0511</h1>
+                </div>
+            </div>
+            <!--Articles-->
+            <div id="content-body" class="row">
+                <div class="article col-xs-12">
+                    <h3 class="article-header"> Test article<small class="text-right">2016-2-6</small></h3>
+                    <p class="article-contents" onclick="javascript:switchContents(this);"> Ward Cunningham and co-author Bo Leuf, in their book The Wiki Way: Quick Collaboration on the Web, described the essence of the Wiki concept as follows:[7]<br />A wiki invites all users to edit any page or to create new pages within the wiki Web site, using only a plain-vanilla Web browser without any extra add-ons.</p>
+                </div>
+
+                <div class="article col-xs-12">
+                    <h3 class="article-header"> 测试<small class="text-right">2016-2-6</small></h3>
+                    <p class="article-contents" onclick="javascript:switchContents(this);"> 日暖烟轻，竹梢映、花阴凌乱。微风皱、池光青碧，绿杨垂岸。艳杏墙头红粉，幽兰砌下飘香暖。称邀宾、明日去寻芳，频欢宴。<br />光景速，浑如箭。醉梦里，春强半。且花前莫厌，玉杯频劝。一枕游仙方警悟，浮名自笑犹萦绊。醉挥毫、付与雪儿歌，娇莺啭。古诗：“丽词付与雪儿歌。”<br /> 日暖烟轻，竹梢映、花阴凌乱。微风皱、池光青碧，绿杨垂岸。艳杏墙头红粉，幽兰砌下飘香暖。称邀宾、明日去寻芳，频欢宴。<br />光景速，浑如箭。醉梦里，春强半。且花前莫厌，玉杯频劝。一枕游仙方警悟，浮名自笑犹萦绊。醉挥毫、付与雪儿歌，娇莺啭。古诗：“丽词付与雪儿歌。”</p>
+                </div>
+
+                <div class="article col-xs-12">
+                    <h3 class="article-header"> Another test article<small class="text-right">2016-2-6</small></h3>
+                    <p class="article-contents" onclick="javascript:switchContents(this);"> Wiki promotes meaningful topic associations between different pages by making page link creation almost intuitively easy and showing whether an intended target page exists or not.<br />A wiki is not a carefully crafted site for casual visitors. Instead, it seeks to involve the visitor in an ongoing process of creation and collaboration that constantly changes the Web site landscape. </p>
+                </div>
+            </div>
+        </div>
+        <!--Side nav-->
+        <div id="page-side" class="col-sm-3 col-xs-1">
+            <img id="corner-img" class="center-block hidden-xs" src="http://tk0511.duapp.com/img/CornerPic.png" alt="gost"/>
+            <ul id="nav-right" class="list-unstyled text-capitalize text-center">
+                <li><a id="active-nav-right" href="http://tk0511.duapp.com/" class="center-block">主页</a></li>
+                <li><a href="http://tk0511.duapp.com/listmaker" class="center-block">list maker</a></li>
+                <li><a href="#" class="center-block">for later</a></li>
+                <li><a href="#" class="center-block visible-xs">▲</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
